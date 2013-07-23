@@ -166,7 +166,7 @@ action :install do
   #set up .jinfo file for update-java-alternatives
   java_name =  app_home.split('/')[-1]
   jinfo_file = "#{app_root}/.#{java_name}.jinfo"
-  if platform_family?("debian") && !::File.exists?(jinfo_file)
+  if node['platform'] == "debian" && !::File.exists?(jinfo_file)
     #description = "Add #{jinfo_file} for debian"
     #converge_by(description) do
       Chef::Log.debug "Adding #{jinfo_file} for debian"
